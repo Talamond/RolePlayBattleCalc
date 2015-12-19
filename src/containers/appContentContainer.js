@@ -1,9 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import Routes from '../routes';
-import { DragDropContext } from 'react-dnd';
-import HTML5Backend from 'react-dnd/modules/backends/HTML5';
 
-@DragDropContext(HTML5Backend)
 export default class AppContentContainer extends Component {
 
 	static propTypes = {
