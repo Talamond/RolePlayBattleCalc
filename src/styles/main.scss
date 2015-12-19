@@ -1,0 +1,31 @@
+
+html {
+	height: 100%;
+	box-sizing: border-box;
+}
+
+body {
+	position: relative;
+	height: 100%;
+	font-family: 'Roboto', sans-serif;
+	font-weight: 300;
+	font-size: 16px;
+}
+
+.die {
+  border: 1px solid pink;
+}
+
+.stat-text {
+  width: 20px;
+}
+
+.stat-block {
+  div {
+    display: inline-block;
+  }
+}
+
+.res {
+  display: inline-block;
+}

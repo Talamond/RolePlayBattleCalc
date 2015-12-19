@@ -1,0 +1,5 @@
+# node_modules ignored by default
+
+src/lib/**
+!src/lib/calendar/**
+src/webReportPreview/**
