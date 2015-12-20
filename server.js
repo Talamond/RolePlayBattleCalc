@@ -11,7 +11,7 @@ new WebpackDevServer(webpack(config), {
 	hot: true,
 	historyApiFallback: true,
 	stats: { colors: true }
-}).listen(3000, 'localhost', function(err) {
+}).listen(3000, '0.0.0.0', function(err) {
 	if (err) console.log(err);
 	console.log('Listening at ' + 'localhost' + ':' + 3000);
 });
@@ -76,4 +76,4 @@ app.get('/characters', function(req, res) {
 	
 });
 
-app.listen(3001);
+app.listen(3001, '0.0.0.0');

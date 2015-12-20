@@ -71,6 +71,7 @@ function applyDamage(att, defChar) {
 export function battle(attacker, defender) {
 	// const aSpeed = calcSpeed(attacker, true);
 	// const dSpeed = calcSpeed(defender, false);
+	// TODO different ablilities
 	const aAtt = Abil.attack(attacker);
 	const dAtt = Abil.attack(defender);
 	const aResult = applyDamage(aAtt, defender);

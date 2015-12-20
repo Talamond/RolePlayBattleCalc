@@ -1,1 +1,56 @@
-{"passive":{},"active":{},"str":{"score":1,"modifer":1,"temp":1,"die":1},"int":{"score":1,"modifer":1,"temp":1,"die":1},"agi":{"score":1,"modifer":1,"temp":1,"die":1},"end":{"score":1,"modifer":1,"temp":1,"die":1},"cha":{"score":1,"modifer":1,"temp":1,"die":1},"per":{"score":1,"modifer":1,"temp":1,"die":1},"luc":{"score":1,"modifer":1,"temp":1,"die":1},"phy":"-","men":"-","fir":"-","ice":"-","win":"-","thu":"-","dar":"-","lig":"-","hp":20,"name":"Sarah"}
+{
+  "passive": {},
+  "active": {},
+  "str": {
+    "score": 1,
+    "modifer": 1,
+    "temp": 1,
+    "die": 1
+  },
+  "int": {
+    "score": 1,
+    "modifer": 1,
+    "temp": 1,
+    "die": 1
+  },
+  "agi": {
+    "score": 1,
+    "modifer": 1,
+    "temp": 1,
+    "die": 1
+  },
+  "end": {
+    "score": 1,
+    "modifer": 1,
+    "temp": 1,
+    "die": 1
+  },
+  "cha": {
+    "score": 1,
+    "modifer": 1,
+    "temp": 1,
+    "die": 1
+  },
+  "per": {
+    "score": 1,
+    "modifer": 1,
+    "temp": 1,
+    "die": 1
+  },
+  "luc": {
+    "score": 1,
+    "modifer": 1,
+    "temp": 1,
+    "die": 1
+  },
+  "phy": "-",
+  "men": "-",
+  "fir": "-",
+  "ice": "-",
+  "win": "-",
+  "thu": "-",
+  "dar": "-",
+  "lig": "-",
+  "hp": 20,
+  "name": "Sarah"
+}

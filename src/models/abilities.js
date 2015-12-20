@@ -1,24 +1,38 @@
 export const passive = {
-	PHYS_BOOST: 'PHYS_BOOST',
-	PHYS_AMP: 'PHYS_AMP',
-	FIRE_BOOST: 'FIRE_BOOST',
-	FIRE_AMP: 'FIRE_AMP',
-	ICE_BOOST: 'ICE_BOOST',
-	ICE_AMP: 'ICE_AMP',
-	WIND_BOOST: 'WIND_BOOST',
-	WIND_AMP: 'WIND_AMP',
-	THUN_BOOST: 'THUN_BOOST',
-	THUN_AMP: 'THUN_AMP',
-	MENT_BOOST: 'MENT_BOOST',
-	MENT_AMP: 'MENT_AMP',
-	DARK_BOOST: 'DARK_BOOST',
-	DARK_DAM: 'DARK_DAM',
-	LIGH_BOOST: 'LIGH_BOOST',
-	LIGHT_DAM: 'LIGHT_DAM',
-	CRIT_AID: 'CRIT_AID',
-	ARES_AID: 'ARES_AID',
-	GOD_AID: 'GOD_AID'
+	phy_boost: 'phy_boost',
+	phy_amp: 'phy_amp',
+	fir_boost: 'fir_boost',
+	fir_amp: 'fir_amp',
+	ice_boost: 'ice_boost',
+	ice_amp: 'ice_amp',
+	win_boost: 'win_boost',
+	win_amp: 'win_amp',
+	thu_boost: 'thu_boost',
+	thu_amp: 'thu_amp',
+	men_boost: 'men_boost',
+	men_amp: 'men_amp',
+	dar_boost: 'dar_boost',
+	dar_dam: 'dar_dam',
+	lig_boost: 'lig_boost',
+	lig_dam: 'lig_dam',
+	crit_aid: 'crit_aid',
+	ares_aid: 'ares_aid',
+	god_aid: 'god_aid',
+	crit_mag: 'crit_mag'
 };
+
+// Fortune Roll
+// Bind
+// Double Up
+
+// Dia
+
+// Regain
+// Buff
+// Blind
+// Debuff
+// Mudo
+// Guard
 
 function roll(die) {
 	if (die > 12) {
@@ -33,11 +47,11 @@ function doCrit(char) {
 		crit: false
 	};
 	let rollRes = 0;
-	if (char.passive.CRIT_AID) {
+	if (char.passive.crit_aid) {
 		rollRes = roll(8);
-	} else if (char.passive.ARES_AID) {
+	} else if (char.passive.ares_aid) {
 		rollRes = roll(10);
-	} else if (char.passive.GOD_AID) {
+	} else if (char.passive.god_aid) {
 		rollRes = roll(12);
 	} else {
 		rollRes = roll(6);
@@ -56,10 +70,10 @@ function doCrit(char) {
 
 function doPhys(char) {
 	let die = char.str.die;
-	if (char.passive.PHYS_BOOST) {
+	if (char.passive.phy_boost) {
 		die = die + 2;
 	}
-	if (char.passive.PHYS_AID) {
+	if (char.passive.phy_aid) {
 		die = die + 2;
 	}
 	let str = (char.str.score || 0) + (char.str.modifer || 0) + (char.str.temp || 0);
@@ -67,13 +81,65 @@ function doPhys(char) {
 	return str;
 }
 
+function doMag(char, elem) {
+	let die = char.int.die;
+	if (char.passive[elem + '_boost']) {
+		die = die + 2;
+	}
+	if (char.passive[elem + '_aid']) {
+		die = die + 2;
+	}
+	let int = (char.int.score || 0) + (char.int.modifer || 0) + (char.int.temp || 0);
+	int = int + roll(die);
+	return int;
+}
+
+function magicAttack(char, elem) {
+	let crit = false;
+	if (char.passive.crit_mag) {
+		crit = doCrit(char);
+	}
+	const mag = doMag(char, elem);
+	return {
+		type: elem,
+		crit: crit.crit,
+		dam: mag
+	};
+}
+
+// function dlAttack(char, elem) {
+// 	const die = 8;
+// 	const result = roll(die);
+// 	return {
+// 		dam:
+// 		boosted:
+// 		result
+// 	}
+// }
+
 export function attack(char) {
 	const crit = doCrit(char);
 	const phys = doPhys(char);
 	return {
-		type: 'phys',
+		type: 'phy',
 		miss: crit.miss,
 		crit: crit.crit,
 		dam: phys
 	};
+}
+
+export function agi(char) {
+	return magicAttack(char, 'fir');
+}
+
+export function zio(char) {
+	return magicAttack(char, 'thu');
+}
+
+export function bufu(char) {
+	return magicAttack(char, 'ice');
+}
+
+export function garu(char) {
+	return magicAttack(char, 'win');
 }
