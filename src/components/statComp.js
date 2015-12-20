@@ -5,10 +5,7 @@ import { Input } from 'react-bootstrap';
 export default class StatComp extends Component {
 	static propTypes = {
 		name: PropTypes.isRequired,
-		score: PropTypes.integer,
-		modifer: PropTypes.integer,
-		temp: PropTypes.integer,
-		die: PropTypes.integer,
+		stat: PropTypes.object,
 		onChange: PropTypes.func
 	};
 
@@ -17,8 +14,17 @@ export default class StatComp extends Component {
 	}
 
 	render() {
-		const {onChange, score, modifer, temp, die, name} = this.props;
-
+		const {onChange, stat, name} = this.props;
+		let score = 0;
+		let modifer = 0;
+		let temp = 0;
+		let die = 0;
+		if (stat) {
+			score = stat.score;
+			modifer = stat.modifer;
+			temp = stat.temp;
+			die = stat.die;
+		}
 		return (
 			<div className="stat-block">
 				<div>{name}</div>

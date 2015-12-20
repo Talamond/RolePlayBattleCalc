@@ -21,13 +21,13 @@ export default class Character extends Component {
 				<Input id="name" type="text" value={character.name} onChange={onNameChange} />
 				<div>HP</div>
 				<Input className="stat-text" id="hp" type="text" value={character.hp} onChange={onHpChange} />
-				<StatComp name="str" onChange={onStatChange}/>
-				<StatComp name="int" onChange={onStatChange}/>
-				<StatComp name="agi" onChange={onStatChange}/>
-				<StatComp name="end" onChange={onStatChange}/>
-				<StatComp name="cha" onChange={onStatChange}/>
-				<StatComp name="per" onChange={onStatChange}/>
-				<StatComp name="luc" onChange={onStatChange}/>
+				<StatComp name="str" stat={character.str} onChange={onStatChange}/>
+				<StatComp name="int" stat={character.int} onChange={onStatChange}/>
+				<StatComp name="agi" stat={character.agi} onChange={onStatChange}/>
+				<StatComp name="end" stat={character.end} onChange={onStatChange}/>
+				<StatComp name="cha" stat={character.cha} onChange={onStatChange}/>
+				<StatComp name="per" stat={character.per} onChange={onStatChange}/>
+				<StatComp name="luc" stat={character.luc} onChange={onStatChange}/>
 				<div>
 					<ResDropDown name="phy" onChange={onResChange}/>
 					<ResDropDown name="men" onChange={onResChange}/>

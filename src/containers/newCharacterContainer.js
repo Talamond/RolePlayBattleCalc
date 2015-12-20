@@ -53,31 +53,3 @@ export default class NewCharacterContainer extends Component {
 		);
 	}
 }
-
-// <div>Name</div>
-// 				<Input id="name" type="text" value={this.props.newCharacter.name} onChange={this.onName.bind(this)} />
-// 				<div>HP</div>
-// 				<Input className="stat-text" id="hp" type="text" value={this.props.newCharacter.hp} onChange={this.onHp.bind(this)} />
-// 				<StatComp name="str" />
-// 				<StatComp name="int" />
-// 				<StatComp name="agi" />
-// 				<StatComp name="end" />
-// 				<StatComp name="cha" />
-// 				<StatComp name="per" />
-// 				<StatComp name="luc" />
-// 				<div>
-// 					<ResDropDown name="phy"/>
-// 					<ResDropDown name="men"/>
-// 				</div>
-// 				<div>
-// 					<ResDropDown name="fir"/>
-// 					<ResDropDown name="ice"/>
-// 				</div>
-// 				<div>
-// 					<ResDropDown name="win"/>
-// 					<ResDropDown name="thu"/>
-// 				</div>
-// 				<div>
-// 					<ResDropDown name="dar"/>
-// 					<ResDropDown name="lig"/>
-// 				</div>

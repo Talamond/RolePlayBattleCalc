@@ -1,0 +1,1 @@
+{"passive":{},"active":{},"str":{"score":10},"int":{"score":10},"agi":{"score":8},"end":{"score":7},"cha":{"score":9},"per":{"score":9},"luc":{"score":8},"phy":"st","men":"-","fir":"-","ice":"-","win":"-","thu":"nu","dar":"-","lig":"-","hp":20,"name":"Mephito"}

@@ -19,7 +19,9 @@ export function newCharacter(state = {
 	dar: '-',
 	lig: '-',
 	hp: 0,
-	name: ''
+	name: '',
+	passive: {},
+	active: {}
 }, action) {
 	const { type, payload } = action;
 
