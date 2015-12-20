@@ -68,12 +68,12 @@ function applyDamage(att, defChar) {
 	};
 }
 
-export function battle(attacker, defender) {
+export function battle(attacker, aAbil, defender, dAbil) {
 	// const aSpeed = calcSpeed(attacker, true);
 	// const dSpeed = calcSpeed(defender, false);
 	// TODO different ablilities
-	const aAtt = Abil.attack(attacker);
-	const dAtt = Abil.attack(defender);
+	const aAtt = Abil[aAbil](attacker);
+	const dAtt = Abil[dAbil](defender);
 	const aResult = applyDamage(aAtt, defender);
 	const dResult = applyDamage(dAtt, attacker);
 	// TODO reflect

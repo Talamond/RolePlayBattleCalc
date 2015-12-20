@@ -86,7 +86,7 @@ function doMag(char, elem) {
 	if (char.passive[elem + '_boost']) {
 		die = die + 2;
 	}
-	if (char.passive[elem + '_aid']) {
+	if (char.passive[elem + '_amp']) {
 		die = die + 2;
 	}
 	let int = (char.int.score || 0) + (char.int.modifer || 0) + (char.int.temp || 0);

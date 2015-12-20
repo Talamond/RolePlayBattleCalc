@@ -32,6 +32,25 @@ export function changeDefender(index) {
 	};
 }
 
+export function setAbilAtt(abil) {
+	return {
+		type: 'ATT_ABIL',
+		payload: {
+			abil
+		}
+	};
+}
+
+export function setAbilDef(abil) {
+	return {
+		type: 'DEF_ABIL',
+		payload: {
+			abil
+		}
+	};
+}
+
+
 export function battle(attacker, defender) {
 	return {
 		type: 'BATTLE',

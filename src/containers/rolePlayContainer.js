@@ -36,8 +36,28 @@ export default class RolePlayContainer extends Component {
 		return dd;
 	}
 
+	renderAbilities(char) {
+		const ret = [];
+		ret.push(<option value="attack">Attack</option>);
+		ret.push(<option value="guard">Guard</option>);
+		_.forEach(char.active, (c) => {
+			ret.push(<option value={c}>{c}</option>);
+		});
+		return ret;
+	}
+
 	onBattle(a, d) {
 		store.actions.rolePlayActions.battle(a, d);
+	}
+
+	onAttAbil(e) {
+		const val = e.target.value;
+		store.actions.rolePlayActions.setAbilAtt(val);
+	}
+
+	onDefAbil(e) {
+		const val = e.target.value;
+		store.actions.rolePlayActions.setAbilDef(val);
 	}
 
 	render() {
@@ -49,6 +69,9 @@ export default class RolePlayContainer extends Component {
 						{this.renderCharacters()}
 					</select>
 					<Character character={attacker}/>
+					<select onChange={this.onAttAbil.bind(this)}>
+						{this.renderAbilities(attacker)}
+					</select>
 					<div>{aReceive.dam}</div>
 					<div>{aReceive.res}</div>
 					<div>{aReceive.crit}</div>
@@ -59,6 +82,9 @@ export default class RolePlayContainer extends Component {
 						{this.renderCharacters()}
 					</select>
 					<Character character={defender}/>
+					<select onChange={this.onDefAbil.bind(this)}>
+						{this.renderAbilities(defender)}
+					</select>
 					<div>{dReceive.dam}</div>
 					<div>{dReceive.res}</div>
 					<div>{dReceive.crit}</div>
