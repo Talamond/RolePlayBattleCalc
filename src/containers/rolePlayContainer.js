@@ -41,7 +41,7 @@ export default class RolePlayContainer extends Component {
 	}
 
 	render() {
-		const { rolePlay: { attacker, defender } } = this.props;
+		const { rolePlay: { attacker, defender, aReceive, dReceive } } = this.props;
 		return (
 			<div>
 				<div className="attacker">
@@ -49,7 +49,9 @@ export default class RolePlayContainer extends Component {
 						{this.renderCharacters()}
 					</select>
 					<Character character={attacker}/>
-
+					<div>{aReceive.dam}</div>
+					<div>{aReceive.res}</div>
+					<div>{aReceive.crit}</div>
 					<Button onClick={() => this.onBattle(attacker, defender)}>Battle</Button>
 				</div>
 				<div className="defender">
@@ -57,6 +59,9 @@ export default class RolePlayContainer extends Component {
 						{this.renderCharacters()}
 					</select>
 					<Character character={defender}/>
+					<div>{dReceive.dam}</div>
+					<div>{dReceive.res}</div>
+					<div>{dReceive.crit}</div>
 				</div>
 			</div>
 		);

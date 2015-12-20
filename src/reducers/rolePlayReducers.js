@@ -6,8 +6,8 @@ export function rolePlay(state = {
 	characters: [],
 	attacker: {},
 	defender: {},
-	aReceive: undefined,
-	dReceive: undefined
+	aReceive: {},
+	dReceive: {}
 }, action) {
 	const { type, payload } = action;
 

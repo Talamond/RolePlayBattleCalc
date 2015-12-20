@@ -34,37 +34,37 @@ function applyDamage(att, defChar) {
 		return {
 			res: 'Weak',
 			dam: dam * 1.5,
-			crit: att.crit
+			crit: att.crit ? 'Critical!' : ''
 		};
 	} else if (res === 'st') {
 		return {
 			res: 'Resisted',
 			dam: dam * 0.5,
-			crit: att.crit
+			crit: att.crit ? 'Critical!' : ''
 		};
 	} else if (res === 'nu') {
 		return {
 			res: 'Nulled',
 			dam: 0,
-			crit: att.crit
+			crit: att.crit ? 'Critical!' : ''
 		};
 	} else if (res === 'rf') {
 		return {
 			res: 'Reflected',
 			dam: dam,
-			crit: att.crit
+			crit: att.crit ? 'Critical!' : ''
 		};
 	} else if (res === 'dr') {
 		return {
 			res: 'Drain',
 			dam: dam * -1,
-			crit: att.crit
+			crit: att.crit ? 'Critical!' : ''
 		};
 	}
 	return {
 		res: 'Normal',
 		dam: dam,
-		crit: att.crit
+		crit: att.crit ? 'Critical!' : ''
 	};
 }
 
