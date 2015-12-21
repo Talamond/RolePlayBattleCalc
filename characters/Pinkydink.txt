@@ -53,5 +53,6 @@
   "name": "Pinkydink",
   "passive": {"heal_boost":""},
   "active": ["dia"],
-  "perm": {}
+  "perm": {},
+  "status": {}
 }

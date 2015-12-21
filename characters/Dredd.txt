@@ -53,5 +53,6 @@
   "name": "Dredd",
   "passive": {"crit_aid":""},
   "active": ["double_up"],
-  "perm": {}
+  "perm": {},
+  "status": {}
 }

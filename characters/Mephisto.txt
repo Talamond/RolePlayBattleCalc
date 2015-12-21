@@ -53,5 +53,6 @@
   "name": "Mephisto",
   "passive": {},
   "active": ["fortune_roll"],
-  "perm": {"moneybags":""}
+  "perm": {"moneybags":""},
+  "status": {}
 }

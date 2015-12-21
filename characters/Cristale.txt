@@ -53,5 +53,6 @@
   "name": "Cristale",
   "passive": {"constrict":""},
   "active": ["bind"],
-  "perm": {}
+  "perm": {},
+  "status": {}
 }

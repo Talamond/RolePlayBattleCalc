@@ -50,6 +50,16 @@ export function setAbilDef(abil) {
 	};
 }
 
+export function setStatus(b, status, charIndex) {
+	return {
+		type: 'SET_STATUS',
+		payload: {
+			b,
+			status,
+			charIndex
+		}
+	};
+}
 
 export function battle(attacker, defender) {
 	return {

@@ -53,5 +53,6 @@
   "name": "Apollo",
   "passive": {},
   "active": ["regain", "buff"],
-  "perm": {}
+  "perm": {},
+  "status": {}
 }

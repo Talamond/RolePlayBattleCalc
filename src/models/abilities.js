@@ -11,9 +11,9 @@
 // 	thu_amp,
 // 	men_boost,
 // 	men_amp,
-// 	dar_boost,
+// 	dar_aid,
 // 	dar_dam,
-// 	lig_boost,
+// 	lig_aid,
 // 	lig_dam,
 // 	crit_aid,
 // 	ares_aid,
@@ -24,15 +24,12 @@
 // };
 
 // Fortune Roll
-// Bind
-// Double Up
 
 // Dia
 
 // Regain
 // Buff
 
-// Mudo
 // Guard
 
 function roll(die) {
@@ -82,7 +79,7 @@ function doPhys(char) {
 	return str;
 }
 
-function doMag(char, elem) {
+function doMag(char, elem, preroll) {
 	let die = char.int.die;
 	if (char.passive[elem + '_boost']) {
 		die = die + 2;
@@ -91,7 +88,7 @@ function doMag(char, elem) {
 		die = die + 2;
 	}
 	let int = (char.int.score || 0) + (char.int.modifer || 0) + (char.int.temp || 0);
-	int = int + roll(die);
+	int = int + (preroll || roll(die));
 	return int;
 }
 
@@ -122,15 +119,23 @@ function doDebuff(char) {
 	};
 }
 
-// function dlAttack(char, elem) {
-// 	const die = 8;
-// 	const result = roll(die);
-// 	return {
-// 		dam:
-// 		boosted:
-// 		result
-// 	}
-// }
+function doInstant(char, elem) {
+	const die = roll(8);
+	if (char.passive[elem + '_dam']) {
+		const dam = magicAttack(char, elem, die);
+		return {
+			type: elem,
+			mAtt: dam,
+			chance: die,
+			boosted: char.passive[elem + '_aid']
+		};
+	}
+	return {
+		type: elem,
+		chance: die,
+		boosted: char.passive[elem + '_aid']
+	};
+}
 
 export function attack(char) {
 	const crit = doCrit(char);
@@ -169,4 +174,12 @@ export function debuff(char) {
 
 export function blind(char) {
 	return doDebuff(char);
+}
+
+export function hama(char) {
+	return doInstant(char, 'lig');
+}
+
+export function mudo(char) {
+	return doInstant(char, 'dar');
 }

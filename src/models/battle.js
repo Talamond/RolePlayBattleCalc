@@ -92,6 +92,44 @@ function applyStatus(att, defChar) {
 	};
 }
 
+function applyInstant(att, defChar) {
+	const res = defChar[att.type];
+	let thres = 2;
+	if (att.boosted) {
+		thres = 4;
+	}
+	if (res === 'we') {
+		thres = thres * 2;
+	} else if (res === 'st') {
+		thres = Math.floor(thres * 0.5);
+	} else if (res === 'nu') {
+		return {
+			res,
+			result: 'Failed'
+		};
+	} else if (res === 'rf') {
+		return {
+			res: 'rf'
+		};
+	}
+	console.log('Instant Roll: ' + att.chance);
+	console.log('Instant Thres: ' + thres);
+	const result = att.chance <= thres;
+	if (result || !att.mAtt) {
+		return {
+			res,
+			result: result ? 'Success' : 'Failed'
+		};
+	}
+
+	const backUp = applyDamage(att, defChar);
+
+	return {
+		...backUp,
+		result: 'Failed'
+	};
+}
+
 export function battle(attacker, aAbil, defender, dAbil) {
 	const aSpeed = calcSpeed(attacker, true);
 	const dSpeed = calcSpeed(defender, false);
@@ -102,12 +140,16 @@ export function battle(attacker, aAbil, defender, dAbil) {
 	let dResult = false;
 	if (aAtt.type === 'men') {
 		aResult = applyStatus(aAtt, defender);
+	} else if (aAtt.type === 'lig' || aAtt.type === 'dar') {
+		aResult = applyInstant(aAtt, defender);
 	} else {
 		aResult = applyDamage(aAtt, defender);
 	}
 
 	if (dAtt.type === 'men') {
 		dResult = applyStatus(dAtt, attacker);
+	} else if (dAtt.type === 'lig' || dAtt.type === 'dar') {
+		dResult = applyInstant(dAtt, attacker);
 	} else {
 		dResult = applyDamage(dAtt, attacker);
 	}

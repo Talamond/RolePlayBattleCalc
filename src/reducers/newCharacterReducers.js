@@ -21,7 +21,9 @@ export function newCharacter(state = {
 	hp: 0,
 	name: '',
 	passive: {},
-	active: []
+	active: [],
+	perm: {},
+	status: {}
 }, action) {
 	const { type, payload } = action;
 

@@ -60,15 +60,22 @@ export default class RolePlayContainer extends Component {
 		store.actions.rolePlayActions.setAbilDef(val);
 	}
 
+	onStatusChange(e, status, index) {
+		const val = e.target.checked;
+		store.actions.rolePlayActions.setStatus(val, status, index);
+	}
+
 	render() {
-		const { rolePlay: { attacker, defender, aReceive, dReceive } } = this.props;
+		const { rolePlay: { attacker, defender, aReceive, dReceive, aIndex, dIndex } } = this.props;
 		return (
 			<div>
 				<div className="attacker">
 					<select onChange={this.onChangeAttacker.bind(this)}>
 						{this.renderCharacters()}
 					</select>
-					<Character character={attacker}/>
+					<If condition={!_.isEmpty(attacker)}>
+						<Character character={attacker} onStatusChange={(e, status) => this.onStatusChange(e, status, aIndex)}/>
+					</If>
 					<select onChange={this.onAttAbil.bind(this)}>
 						{this.renderAbilities(attacker)}
 					</select>
@@ -82,7 +89,9 @@ export default class RolePlayContainer extends Component {
 					<select onChange={this.onChangeDefender.bind(this)}>
 						{this.renderCharacters()}
 					</select>
-					<Character character={defender}/>
+					<If condition={!_.isEmpty(defender)}>
+						<Character character={defender} onStatusChange={(e, status) => this.onStatusChange(e, status, dIndex)}/>
+					</If>
 					<select onChange={this.onDefAbil.bind(this)}>
 						{this.renderAbilities(defender)}
 					</select>
