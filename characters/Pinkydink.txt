@@ -51,7 +51,7 @@
   "lig": "-",
   "hp": 20,
   "name": "Pinkydink",
-  "passive": {"heal_boost":""},
+  "passive": {"heal_boost":true},
   "active": ["dia"],
   "perm": {},
   "status": {}

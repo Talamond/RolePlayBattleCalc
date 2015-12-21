@@ -83,6 +83,8 @@ export default class RolePlayContainer extends Component {
 					<div>{aReceive.result}</div>
 					<div>{aReceive.res}</div>
 					<div>{aReceive.crit}</div>
+					<div>{aReceive.heal}</div>
+					<div>{aReceive.healDam}</div>
 					<Button onClick={() => this.onBattle(attacker, defender)}>Battle</Button>
 				</div>
 				<div className="defender">
@@ -99,6 +101,8 @@ export default class RolePlayContainer extends Component {
 					<div>{dReceive.result}</div>
 					<div>{dReceive.res}</div>
 					<div>{dReceive.crit}</div>
+					<div>{dReceive.heal}</div>
+					<div>{dReceive.healDam}</div>
 				</div>
 			</div>
 		);

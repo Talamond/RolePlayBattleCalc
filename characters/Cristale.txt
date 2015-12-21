@@ -51,7 +51,7 @@
   "lig": "st",
   "hp": 20,
   "name": "Cristale",
-  "passive": {"constrict":""},
+  "passive": {"constrict":true},
   "active": ["bind"],
   "perm": {},
   "status": {}

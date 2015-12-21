@@ -142,6 +142,11 @@ export function battle(attacker, aAbil, defender, dAbil) {
 		aResult = applyStatus(aAtt, defender);
 	} else if (aAtt.type === 'lig' || aAtt.type === 'dar') {
 		aResult = applyInstant(aAtt, defender);
+	} else if (aAtt.type === 'heal') {
+		aResult = {
+			heal: 'Healed',
+			healDam: aAtt.dam
+		};
 	} else {
 		aResult = applyDamage(aAtt, defender);
 	}
@@ -150,6 +155,11 @@ export function battle(attacker, aAbil, defender, dAbil) {
 		dResult = applyStatus(dAtt, attacker);
 	} else if (dAtt.type === 'lig' || dAtt.type === 'dar') {
 		dResult = applyInstant(dAtt, attacker);
+	} else if (dAtt.type === 'heal') {
+		dResult = {
+			heal: 'Healed',
+			healDam: dAtt.dam
+		};
 	} else {
 		dResult = applyDamage(dAtt, attacker);
 	}

@@ -27,9 +27,6 @@
 
 // Dia
 
-// Regain
-// Buff
-
 // Guard
 
 function roll(die) {
@@ -90,6 +87,19 @@ function doMag(char, elem, preroll) {
 	let int = (char.int.score || 0) + (char.int.modifer || 0) + (char.int.temp || 0);
 	int = int + (preroll || roll(die));
 	return int;
+}
+
+function doHeal(char) {
+	let die = char.cha.die;
+	if (char.passive.heal_boost) {
+		die = die + 2;
+	}
+	if (char.passive.heal_amp) {
+		die = die + 2;
+	}
+	let cha = (char.cha.score || 0) + (char.cha.modifer || 0) + (char.cha.temp || 0);
+	cha = (cha / 5) + roll(die);
+	return cha;
 }
 
 function magicAttack(char, elem) {
@@ -182,4 +192,11 @@ export function hama(char) {
 
 export function mudo(char) {
 	return doInstant(char, 'dar');
+}
+
+export function dia(char) {
+	return {
+		type: 'heal',
+		dam: doHeal(char)
+	};
 }

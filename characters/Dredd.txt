@@ -51,7 +51,7 @@
   "lig": "-",
   "hp": 20,
   "name": "Dredd",
-  "passive": {"crit_aid":""},
+  "passive": {"crit_aid":true},
   "active": ["double_up"],
   "perm": {},
   "status": {}
