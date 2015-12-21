@@ -25,8 +25,6 @@
 
 // Fortune Roll
 
-// Guard
-
 function roll(die) {
 	if (die > 12) {
 		return Math.floor((Math.random() * 20) + 1);
@@ -96,7 +94,7 @@ function doHeal(char) {
 		die = die + 2;
 	}
 	let cha = (char.cha.score || 0) + (char.cha.modifer || 0) + (char.cha.temp || 0);
-	cha = (cha / 5) + roll(die);
+	cha = Math.ceil(cha / 5) + roll(die);
 	return cha;
 }
 

@@ -7,6 +7,7 @@ const BATTLE = 'BATTLE';
 const ATT_ABIL = 'ATT_ABIL';
 const DEF_ABIL = 'DEF_ABIL';
 const SET_STATUS = 'SET_STATUS';
+const CHANGE_HP = 'CHANGE_HP';
 
 const handlers = {};
 
@@ -98,5 +99,12 @@ handlers[SET_STATUS] = (state, payload) => {
 	} else {
 		tempStat(char, 0);
 	}
+	return newState;
+};
+
+handlers[CHANGE_HP] = (state, payload) => {
+	const newState = { ...state };
+	const char = newState.characters[payload.index];
+	char.hp = payload.hp;
 	return newState;
 };

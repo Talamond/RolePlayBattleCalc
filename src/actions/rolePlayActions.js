@@ -70,3 +70,13 @@ export function battle(attacker, defender) {
 		}
 	};
 }
+
+export function changeHp(charIndex, hp) {
+	return {
+		type: 'CHANGE_HP',
+		payload: {
+			index: charIndex,
+			hp
+		}
+	};
+}

@@ -65,6 +65,11 @@ export default class RolePlayContainer extends Component {
 		store.actions.rolePlayActions.setStatus(val, status, index);
 	}
 
+	onHpChange(e, index) {
+		const val = parseInt(e.target.value, 10);
+		store.actions.rolePlayActions.changeHp(index, val);
+	}
+
 	render() {
 		const { rolePlay: { attacker, defender, aReceive, dReceive, aIndex, dIndex } } = this.props;
 		return (
@@ -74,7 +79,9 @@ export default class RolePlayContainer extends Component {
 						{this.renderCharacters()}
 					</select>
 					<If condition={!_.isEmpty(attacker)}>
-						<Character character={attacker} onStatusChange={(e, status) => this.onStatusChange(e, status, aIndex)}/>
+						<Character character={attacker}
+							onStatusChange={(e, status) => this.onStatusChange(e, status, aIndex)}
+							onHpChange={(e) => this.onHpChange(e, aIndex)}/>
 					</If>
 					<select onChange={this.onAttAbil.bind(this)}>
 						{this.renderAbilities(attacker)}
@@ -92,7 +99,9 @@ export default class RolePlayContainer extends Component {
 						{this.renderCharacters()}
 					</select>
 					<If condition={!_.isEmpty(defender)}>
-						<Character character={defender} onStatusChange={(e, status) => this.onStatusChange(e, status, dIndex)}/>
+						<Character character={defender}
+							onStatusChange={(e, status) => this.onStatusChange(e, status, dIndex)}
+							onHpChange={(e) => this.onHpChange(e, dIndex)} />
 					</If>
 					<select onChange={this.onDefAbil.bind(this)}>
 						{this.renderAbilities(defender)}
