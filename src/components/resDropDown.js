@@ -4,7 +4,8 @@ import '../styles/main';
 export default class ResDropDown extends Component {
 	static propTypes = {
 		name: PropTypes.isRequired,
-		onChange: PropTypes.func
+		onChange: PropTypes.func,
+		val: PropTypes.string
 	};
 
 	constructor(props) {
@@ -12,11 +13,11 @@ export default class ResDropDown extends Component {
 	}
 
 	render() {
-		const { name, onChange } = this.props;
+		const { name, onChange, val } = this.props;
 		return (
 			<div className="res">
 				<div>{name}</div>
-				<select onChange={(e) => onChange(e, name)}>
+				<select value={val} onChange={(e) => onChange(e, name)}>
 					<option value="-">-</option>
 					<option value="we">We</option>
 					<option value="st">St</option>

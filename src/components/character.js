@@ -29,20 +29,20 @@ export default class Character extends Component {
 				<StatComp name="per" stat={character.per} onChange={onStatChange}/>
 				<StatComp name="luc" stat={character.luc} onChange={onStatChange}/>
 				<div>
-					<ResDropDown name="phy" onChange={onResChange}/>
-					<ResDropDown name="men" onChange={onResChange}/>
+					<ResDropDown name="phy" onChange={onResChange} val={character.phy}/>
+					<ResDropDown name="men" onChange={onResChange} val={character.men}/>
 				</div>
 				<div>
-					<ResDropDown name="fir" onChange={onResChange}/>
-					<ResDropDown name="ice"/>
+					<ResDropDown name="fir" onChange={onResChange} val={character.fir}/>
+					<ResDropDown name="ice" onChange={onResChange} val={character.ice}/>
 				</div>
 				<div>
-					<ResDropDown name="win" onChange={onResChange}/>
-					<ResDropDown name="thu" onChange={onResChange}/>
+					<ResDropDown name="win" onChange={onResChange} val={character.win}/>
+					<ResDropDown name="thu" onChange={onResChange} val={character.thu}/>
 				</div>
 				<div>
-					<ResDropDown name="dar" onChange={onResChange}/>
-					<ResDropDown name="lig" onChange={onResChange}/>
+					<ResDropDown name="dar" onChange={onResChange} val={character.dar}/>
+					<ResDropDown name="lig" onChange={onResChange} val={character.lig}/>
 				</div>
 			</div>
 		);
