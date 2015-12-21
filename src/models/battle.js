@@ -136,32 +136,49 @@ export function battle(attacker, aAbil, defender, dAbil) {
 	// TODO different ablilities
 	const aAtt = Abil[aAbil](attacker);
 	const dAtt = Abil[dAbil](defender);
-	let aResult = false;
-	let dResult = false;
+	let aResult = {};
+	let dResult = {};
 	if (aAtt.type === 'men') {
 		aResult = applyStatus(aAtt, defender);
 	} else if (aAtt.type === 'lig' || aAtt.type === 'dar') {
 		aResult = applyInstant(aAtt, defender);
 	} else if (aAtt.type === 'heal') {
-		aResult = {
+		dResult = {
 			heal: 'Healed',
 			healDam: aAtt.dam
+		};
+	} else if (aAtt.type === 'guard') {
+		dResult = {
+			heal: 'Guarded'
 		};
 	} else {
 		aResult = applyDamage(aAtt, defender);
 	}
 
 	if (dAtt.type === 'men') {
-		dResult = applyStatus(dAtt, attacker);
+		dResult = { ...applyStatus(dAtt, attacker), ...dResult };
 	} else if (dAtt.type === 'lig' || dAtt.type === 'dar') {
-		dResult = applyInstant(dAtt, attacker);
+		dResult = { ...applyInstant(dAtt, attacker), ...dResult};
 	} else if (dAtt.type === 'heal') {
-		dResult = {
+		aResult = {
+			...aResult,
 			heal: 'Healed',
 			healDam: dAtt.dam
 		};
+	} else if (dAtt.type === 'guard') {
+		aResult = {
+			...aResult,
+			heal: 'Guarded'
+		};
 	} else {
-		dResult = applyDamage(dAtt, attacker);
+		dResult = { ...applyDamage(dAtt, attacker), ...dResult};
+	}
+
+	if (dResult.heal === 'Guarded') {
+		dResult.dam = Math.floor(dResult.dam / 2);
+	}
+	if (aResult.heal === 'Guarded') {
+		aResult.dam = Math.floor(aResult.dam / 2);
 	}
 	// TODO reflect
 	return {

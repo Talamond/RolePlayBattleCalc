@@ -25,8 +25,6 @@
 
 // Fortune Roll
 
-// Dia
-
 // Guard
 
 function roll(die) {
@@ -155,6 +153,11 @@ export function attack(char) {
 		miss: crit.miss,
 		crit: crit.crit,
 		dam: phys
+	};
+}
+export function guard() {
+	return {
+		type: 'guard'
 	};
 }
 
