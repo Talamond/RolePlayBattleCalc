@@ -1,0 +1,57 @@
+{
+  "str": {
+    "score": 11,
+    "die": 4,
+    "modifer": 0,
+    "temp": 0
+  },
+  "int": {
+    "score": 11,
+    "modifer": 0,
+    "temp": 0,
+    "die": 4
+  },
+  "agi": {
+    "score": 10,
+    "modifer": 0,
+    "temp": 0,
+    "die": 4
+  },
+  "end": {
+    "score": 10,
+    "modifer": 0,
+    "temp": 0,
+    "die": 4
+  },
+  "cha": {
+    "score": 13,
+    "modifer": 0,
+    "temp": 0,
+    "die": 4
+  },
+  "per": {
+    "score": 10,
+    "modifer": 0,
+    "temp": 0,
+    "die": 4
+  },
+  "luc": {
+    "score": 11,
+    "modifer": 0,
+    "temp": 0,
+    "die": 4
+  },
+  "phy": "-",
+  "men": "-",
+  "fir": "we",
+  "ice": "we",
+  "win": "st",
+  "thu": "st",
+  "dar": "-",
+  "lig": "-",
+  "hp": 20,
+  "name": "Apollo",
+  "passive": {},
+  "active": ["regain", "buff"],
+  "perm": {}
+}

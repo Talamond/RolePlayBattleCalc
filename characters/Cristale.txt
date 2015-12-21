@@ -1,0 +1,57 @@
+{
+  "str": {
+    "score": 9,
+    "die": 4,
+    "modifer": 0,
+    "temp": 0
+  },
+  "int": {
+    "score": 10,
+    "modifer": 0,
+    "temp": 0,
+    "die": 4
+  },
+  "agi": {
+    "score": 9,
+    "modifer": 0,
+    "temp": 0,
+    "die": 4
+  },
+  "end": {
+    "score": 16,
+    "modifer": 0,
+    "temp": 0,
+    "die": 4
+  },
+  "cha": {
+    "score": 9,
+    "modifer": 0,
+    "temp": 0,
+    "die": 4
+  },
+  "per": {
+    "score": 14,
+    "modifer": 0,
+    "temp": 0,
+    "die": 4
+  },
+  "luc": {
+    "score": 9,
+    "modifer": 0,
+    "temp": 0,
+    "die": 4
+  },
+  "phy": "-",
+  "men": "we",
+  "fir": "-",
+  "ice": "-",
+  "win": "-",
+  "thu": "-",
+  "dar": "-",
+  "lig": "st",
+  "hp": 20,
+  "name": "Cristale",
+  "passive": {"constrict":""},
+  "active": ["bind"],
+  "perm": {}
+}

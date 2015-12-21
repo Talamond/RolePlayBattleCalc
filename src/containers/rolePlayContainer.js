@@ -73,6 +73,7 @@ export default class RolePlayContainer extends Component {
 						{this.renderAbilities(attacker)}
 					</select>
 					<div>{aReceive.dam}</div>
+					<div>{aReceive.result}</div>
 					<div>{aReceive.res}</div>
 					<div>{aReceive.crit}</div>
 					<Button onClick={() => this.onBattle(attacker, defender)}>Battle</Button>
@@ -86,6 +87,7 @@ export default class RolePlayContainer extends Component {
 						{this.renderAbilities(defender)}
 					</select>
 					<div>{dReceive.dam}</div>
+					<div>{dReceive.result}</div>
 					<div>{dReceive.res}</div>
 					<div>{dReceive.crit}</div>
 				</div>

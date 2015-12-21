@@ -1,0 +1,57 @@
+{
+  "str": {
+    "score": 9,
+    "die": 4,
+    "modifer": 0,
+    "temp": 0
+  },
+  "int": {
+    "score": 9,
+    "modifer": 0,
+    "temp": 0,
+    "die": 4
+  },
+  "agi": {
+    "score": 15,
+    "modifer": 0,
+    "temp": 0,
+    "die": 4
+  },
+  "end": {
+    "score": 9,
+    "modifer": 0,
+    "temp": 0,
+    "die": 4
+  },
+  "cha": {
+    "score": 17,
+    "modifer": 0,
+    "temp": 0,
+    "die": 4
+  },
+  "per": {
+    "score": 9,
+    "modifer": 0,
+    "temp": 0,
+    "die": 4
+  },
+  "luc": {
+    "score": 10,
+    "modifer": 0,
+    "temp": 0,
+    "die": 4
+  },
+  "phy": "-",
+  "men": "-",
+  "fir": "-",
+  "ice": "-",
+  "win": "-",
+  "thu": "-",
+  "dar": "-",
+  "lig": "-",
+  "hp": 20,
+  "name": "Pinkydink",
+  "passive": {"heal_boost":""},
+  "active": ["dia"],
+  "perm": {}
+}

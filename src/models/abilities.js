@@ -1,25 +1,27 @@
-export const passive = {
-	phy_boost: 'phy_boost',
-	phy_amp: 'phy_amp',
-	fir_boost: 'fir_boost',
-	fir_amp: 'fir_amp',
-	ice_boost: 'ice_boost',
-	ice_amp: 'ice_amp',
-	win_boost: 'win_boost',
-	win_amp: 'win_amp',
-	thu_boost: 'thu_boost',
-	thu_amp: 'thu_amp',
-	men_boost: 'men_boost',
-	men_amp: 'men_amp',
-	dar_boost: 'dar_boost',
-	dar_dam: 'dar_dam',
-	lig_boost: 'lig_boost',
-	lig_dam: 'lig_dam',
-	crit_aid: 'crit_aid',
-	ares_aid: 'ares_aid',
-	god_aid: 'god_aid',
-	crit_mag: 'crit_mag'
-};
+// export const passive = {
+// 	phy_boost,
+// 	phy_amp,
+// 	fir_boost,
+// 	fir_amp,
+// 	ice_boost,
+// 	ice_amp,
+// 	win_boost,
+// 	win_amp,
+// 	thu_boost,
+// 	thu_amp,
+// 	men_boost,
+// 	men_amp,
+// 	dar_boost,
+// 	dar_dam,
+// 	lig_boost,
+// 	lig_dam,
+// 	crit_aid,
+// 	ares_aid,
+// 	god_aid,
+// 	crit_mag,
+// 	heal_boost,
+// 	heal_amp
+// };
 
 // Fortune Roll
 // Bind
@@ -29,8 +31,7 @@ export const passive = {
 
 // Regain
 // Buff
-// Blind
-// Debuff
+
 // Mudo
 // Guard
 
@@ -107,6 +108,20 @@ function magicAttack(char, elem) {
 	};
 }
 
+function doDebuff(char) {
+	let die = 6;
+	if (char.passive.men_boost) {
+		die = die + 2;
+	}
+	if (char.passive.men_amp) {
+		die = die + 2;
+	}
+	return {
+		type: 'men',
+		chance: die
+	};
+}
+
 // function dlAttack(char, elem) {
 // 	const die = 8;
 // 	const result = roll(die);
@@ -142,4 +157,16 @@ export function bufu(char) {
 
 export function garu(char) {
 	return magicAttack(char, 'win');
+}
+
+export function bind(char) {
+	return doDebuff(char);
+}
+
+export function debuff(char) {
+	return doDebuff(char);
+}
+
+export function blind(char) {
+	return doDebuff(char);
 }
