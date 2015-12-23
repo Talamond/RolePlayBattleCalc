@@ -1,24 +1,24 @@
 {
   "str": {
-    "score": 14,
+    "score": 9,
     "die": 4,
     "modifer": 0,
     "temp": 0
   },
   "int": {
-    "score": 10,
+    "score": 9,
     "modifer": 0,
     "temp": 0,
     "die": 4
   },
   "agi": {
-    "score": 11,
+    "score": 6,
     "modifer": 0,
     "temp": 0,
     "die": 4
   },
   "end": {
-    "score": 11,
+    "score": 7,
     "modifer": 0,
     "temp": 0,
     "die": 4
@@ -41,18 +41,18 @@
     "temp": 0,
     "die": 4
   },
-  "phy": "-",
+  "phy": "we",
   "men": "st",
-  "fir": "we",
-  "ice": "-",
-  "win": "-",
-  "thu": "-",
+  "fir": "st",
+  "ice": "st",
+  "win": "st",
+  "thu": "st",
   "dar": "-",
   "lig": "-",
-  "hp": 25,
-  "name": "Gin",
-  "passive": {"phy_boost":true},
-  "active": ["double_up","blind","debuff"],
+  "hp": 10,
+  "name": "Kasa",
+  "passive": {},
+  "active": ["precision_hit"],
   "perm": {},
   "status": {}
 }

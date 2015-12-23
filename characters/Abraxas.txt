@@ -1,18 +1,18 @@
 {
   "str": {
-    "score": 14,
-    "die": 4,
+    "score": 9,
+    "die": 6,
     "modifer": 0,
     "temp": 0
   },
   "int": {
-    "score": 10,
+    "score": 9,
     "modifer": 0,
     "temp": 0,
     "die": 4
   },
   "agi": {
-    "score": 11,
+    "score": 10,
     "modifer": 0,
     "temp": 0,
     "die": 4
@@ -30,7 +30,7 @@
     "die": 4
   },
   "per": {
-    "score": 10,
+    "score": 20,
     "modifer": 0,
     "temp": 0,
     "die": 4
@@ -41,18 +41,18 @@
     "temp": 0,
     "die": 4
   },
-  "phy": "-",
+  "phy": "st",
   "men": "st",
   "fir": "we",
-  "ice": "-",
-  "win": "-",
-  "thu": "-",
-  "dar": "-",
-  "lig": "-",
-  "hp": 25,
-  "name": "Gin",
-  "passive": {"phy_boost":true},
-  "active": ["double_up","blind","debuff"],
+  "ice": "we",
+  "win": "we",
+  "thu": "we",
+  "dar": "nu",
+  "lig": "nu",
+  "hp": 30,
+  "name": "Abraxas",
+  "passive": {"men_boost":true},
+  "active": ["poison"],
   "perm": {},
   "status": {}
 }

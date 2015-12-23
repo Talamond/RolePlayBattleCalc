@@ -1,7 +1,7 @@
 {
   "str": {
-    "score": 14,
-    "die": 4,
+    "score": 12,
+    "die": 6,
     "modifer": 0,
     "temp": 0
   },
@@ -12,7 +12,7 @@
     "die": 4
   },
   "agi": {
-    "score": 11,
+    "score": 12,
     "modifer": 0,
     "temp": 0,
     "die": 4
@@ -42,17 +42,17 @@
     "die": 4
   },
   "phy": "-",
-  "men": "st",
+  "men": "-",
   "fir": "we",
-  "ice": "-",
+  "ice": "we",
   "win": "-",
-  "thu": "-",
-  "dar": "-",
-  "lig": "-",
-  "hp": 25,
-  "name": "Gin",
-  "passive": {"phy_boost":true},
-  "active": ["double_up","blind","debuff"],
+  "thu": "dr",
+  "dar": "st",
+  "lig": "st",
+  "hp": 30,
+  "name": "Nue",
+  "passive": {},
+  "active": ["anger_hit","zio"],
   "perm": {},
   "status": {}
 }
