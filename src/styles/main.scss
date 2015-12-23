@@ -32,8 +32,58 @@ body {
 
 .attacker {
 	float: left;
+	display: inline-block;
 }
 
 .defender {
 	float: right;
+	display: inline-block;
+}
+
+.agiroll {
+	color: green;
+	font-weight: bold;
+}
+
+.mainroll {
+	color: red;
+	font-weight: bold;
+}
+
+.critroll {
+	color: blue;
+	font-weight: bold;
+}
+
+.battle {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;  
+}
+
+.aChar {
+	order: 1;
+	flex: 1;
+}
+
+.aRes {
+	order: 2;
+	flex: 1;
+}
+
+.button {
+	flex: 1;
+	order: 3;
+}
+
+.dChar {
+	flex: 1;
+	order: 5;
+}
+
+.dRes {
+	flex: 1;
+	order: 4;
 }

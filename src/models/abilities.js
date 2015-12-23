@@ -56,6 +56,7 @@ function doCrit(char) {
 	if (rollRes === 1) {
 		ret.miss = true;
 	}
+	ret.critRoll = rollRes;
 	return ret;
 }
 
@@ -68,8 +69,12 @@ function doPhys(char) {
 		die = die + 2;
 	}
 	let str = (char.str.score || 0) + (char.str.modifer || 0) + (char.str.temp || 0);
-	str = str + roll(die);
-	return str;
+	const r = roll(die);
+	str = str + r;
+	return {
+		total: str,
+		mainRoll: r
+	};
 }
 
 function doMag(char, elem, preroll) {
@@ -81,8 +86,12 @@ function doMag(char, elem, preroll) {
 		die = die + 2;
 	}
 	let int = (char.int.score || 0) + (char.int.modifer || 0) + (char.int.temp || 0);
-	int = int + (preroll || roll(die));
-	return int;
+	const r = preroll || roll(die);
+	int = int + r;
+	return {
+		total: int,
+		mainRoll: r
+	};
 }
 
 function doHeal(char) {
@@ -94,8 +103,12 @@ function doHeal(char) {
 		die = die + 2;
 	}
 	let cha = (char.cha.score || 0) + (char.cha.modifer || 0) + (char.cha.temp || 0);
-	cha = Math.ceil(cha / 5) + roll(die);
-	return cha;
+	const r = roll(die);
+	cha = Math.ceil(cha / 5) + r;
+	return {
+		total: cha,
+		mainRoll: r
+	};
 }
 
 function magicAttack(char, elem) {
@@ -107,7 +120,9 @@ function magicAttack(char, elem) {
 	return {
 		type: elem,
 		crit: crit.crit,
-		dam: mag
+		critRoll: crit.critRoll,
+		dam: mag.total,
+		mainRoll: mag.mainRoll
 	};
 }
 
@@ -131,7 +146,8 @@ function doInstant(char, elem) {
 		const dam = magicAttack(char, elem, die);
 		return {
 			type: elem,
-			mAtt: dam,
+			mAtt: dam.total,
+			mainRoll: dam.mainRoll,
 			chance: die,
 			boosted: char.passive[elem + '_aid']
 		};
@@ -139,6 +155,7 @@ function doInstant(char, elem) {
 	return {
 		type: elem,
 		chance: die,
+		mainRoll: die,
 		boosted: char.passive[elem + '_aid']
 	};
 }
@@ -150,7 +167,9 @@ export function attack(char) {
 		type: 'phy',
 		miss: crit.miss,
 		crit: crit.crit,
-		dam: phys
+		critRoll: crit.critRoll,
+		dam: phys.total,
+		mainRoll: phys.mainRoll
 	};
 }
 export function guard() {
@@ -196,8 +215,10 @@ export function mudo(char) {
 }
 
 export function dia(char) {
+	const hea = doHeal(char);
 	return {
 		type: 'heal',
-		dam: doHeal(char)
+		dam: hea.total,
+		mainRoll: hea.mainRoll
 	};
 }

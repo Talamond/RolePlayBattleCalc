@@ -21,6 +21,8 @@ export function rolePlay(state = {
 	dIndex: -1,
 	aReceive: {},
 	dReceive: {},
+	aRoll: {},
+	dRoll: {},
 	aAbil: 'attack',
 	dAbil: 'attack',
 	battleSeq: [],
@@ -84,12 +86,14 @@ handlers[BATTLE] = (state, payload) => {
 	const result = Battle.battle(attacker, state.aAbil, defender, state.dAbil);
 	newState.aReceive = result.aReceive;
 	newState.dReceive = result.dReceive;
-	newState.characters[newState.aIndex].hp = newState.characters[newState.aIndex].hp
-		- (newState.aReceive.dam ? newState.aReceive.dam : 0)
-		+ (newState.aReceive.healDam ? newState.aReceive.healDam : 0);
-	newState.characters[newState.dIndex].hp = newState.characters[newState.dIndex].hp
-		- (newState.dReceive.dam ? newState.dReceive.dam : 0)
-		+ (newState.dReceive.healDam ? newState.dReceive.healDam : 0);
+	newState.aRoll = result.aRoll;
+	newState.dRoll = result.dRoll;
+	// newState.characters[newState.aIndex].hp = newState.characters[newState.aIndex].hp
+	// 	- (newState.aReceive.dam ? newState.aReceive.dam : 0)
+	// 	+ (newState.aReceive.healDam ? newState.aReceive.healDam : 0);
+	// newState.characters[newState.dIndex].hp = newState.characters[newState.dIndex].hp
+	// 	- (newState.dReceive.dam ? newState.dReceive.dam : 0)
+	// 	+ (newState.dReceive.healDam ? newState.dReceive.healDam : 0);
 	console.log(result);
 	return newState;
 };

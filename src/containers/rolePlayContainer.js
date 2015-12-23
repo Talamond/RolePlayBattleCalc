@@ -70,49 +70,70 @@ export default class RolePlayContainer extends Component {
 		store.actions.rolePlayActions.changeHp(index, val);
 	}
 
-	render() {
-		const { rolePlay: { attacker, defender, aReceive, dReceive, aIndex, dIndex } } = this.props;
+	renderResults(r) {
 		return (
 			<div>
-				<div className="attacker">
+				<br/>
+				<div>{r.dam}</div>
+				<div>{r.res}</div>
+				<div>{r.crit}</div>
+				<div>{r.heal}</div>
+				<div>{r.healDam}</div>
+			</div>
+		);
+	}
+
+	renderRoll(r) {
+		return (
+			<div>
+				<div className="agiroll">{r.agiRoll}</div>
+				<div className="mainroll">{r.mainRoll}</div>
+				<div className="critRoll">{r.critRoll}</div>
+			</div>
+		);
+	}
+
+	render() {
+		const { rolePlay: { attacker, defender, aReceive, dReceive, aIndex, dIndex, aRoll, dRoll } } = this.props;
+		return (
+			<div className="battle">
+				<div className="aChar">
 					<select value={aIndex} onChange={this.onChangeAttacker.bind(this)}>
 						{this.renderCharacters()}
+					</select>
+					<select onChange={this.onAttAbil.bind(this)}>
+						{this.renderAbilities(attacker)}
 					</select>
 					<If condition={!_.isEmpty(attacker)}>
 						<Character character={attacker}
 							onStatusChange={(e, status) => this.onStatusChange(e, status, aIndex)}
 							onHpChange={(e) => this.onHpChange(e, aIndex)}/>
 					</If>
-					<select onChange={this.onAttAbil.bind(this)}>
-						{this.renderAbilities(attacker)}
-					</select>
-					<div>{aReceive.dam}</div>
-					<div>{aReceive.result}</div>
-					<div>{aReceive.res}</div>
-					<div>{aReceive.crit}</div>
-					<div>{aReceive.heal}</div>
-					<div>{aReceive.healDam}</div>
+				</div>
+				<div className="aRes">
+					{this.renderRoll(aRoll)}
+					{this.renderResults(aReceive)}
+				</div>
+				<div className="button">
 					<Button onClick={() => this.onBattle(attacker, defender)}>Battle</Button>
 					<Button onClick={() => store.actions.rolePlayActions.next()}>Next</Button>
 				</div>
-				<div className="defender">
+				<div className="dRes">
+					{this.renderRoll(dRoll)}
+					{this.renderResults(dReceive)}
+				</div>
+				<div className="dChar">
 					<select value={dIndex} onChange={this.onChangeDefender.bind(this)}>
 						{this.renderCharacters()}
+					</select>
+					<select onChange={this.onDefAbil.bind(this)}>
+						{this.renderAbilities(defender)}
 					</select>
 					<If condition={!_.isEmpty(defender)}>
 						<Character character={defender}
 							onStatusChange={(e, status) => this.onStatusChange(e, status, dIndex)}
 							onHpChange={(e) => this.onHpChange(e, dIndex)} />
 					</If>
-					<select onChange={this.onDefAbil.bind(this)}>
-						{this.renderAbilities(defender)}
-					</select>
-					<div>{dReceive.dam}</div>
-					<div>{dReceive.result}</div>
-					<div>{dReceive.res}</div>
-					<div>{dReceive.crit}</div>
-					<div>{dReceive.heal}</div>
-					<div>{dReceive.healDam}</div>
 				</div>
 			</div>
 		);

@@ -6,8 +6,12 @@ function roll(die) {
 
 function calcSpeed(char, init) {
 	let agi = (char.agi.score || 0) + (char.agi.modifer || 0) + (char.agi.temp || 0);
-	agi = agi + roll(init ? char.agi.die * 2 : char.agi.die);
-	return agi;
+	const r = roll(init ? char.agi.die * 2 : char.agi.die);
+	agi = agi + r;
+	return {
+		total: agi,
+		agiRoll: r
+	};
 }
 
 function getEnd(char) {
@@ -180,10 +184,26 @@ export function battle(attacker, aAbil, defender, dAbil) {
 	if (aResult.heal === 'Guarded') {
 		aResult.dam = Math.floor(aResult.dam / 2);
 	}
+	aResult.mainRoll = aAtt.mainRoll;
+	aResult.critRoll = aAtt.critRoll;
+	aResult.agiRoll = aSpeed.agiRoll;
+	dResult.mainRoll = dAtt.mainRoll;
+	dResult.critRoll = dAtt.critRoll;
+	dResult.agiRoll = dSpeed.agiRoll;
 	// TODO reflect
 	return {
+		aRoll: {
+			mainRoll: aAtt.mainRoll,
+			critRoll: aAtt.critRoll,
+			agiRoll: aSpeed.agiRoll
+		},
+		dRoll: {
+			mainRoll: dAtt.mainRoll,
+			critRoll: dAtt.critRoll,
+			agiRoll: dSpeed.agiRoll
+		},
 		aReceive: dResult,
 		dReceive: aResult,
-		speedResult: aSpeed >= dSpeed ? true : false
+		speedResult: aSpeed.total >= dSpeed.total ? true : false
 	};
 }
