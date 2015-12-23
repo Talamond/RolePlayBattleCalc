@@ -1,4 +1,5 @@
 import * as Battle from '../models/battle';
+import _ from 'lodash';
 
 const CHARACTERS = 'CHARACTERS';
 const CHANGE_ATTACKER = 'CHANGE_ATTACKER';
@@ -8,6 +9,7 @@ const ATT_ABIL = 'ATT_ABIL';
 const DEF_ABIL = 'DEF_ABIL';
 const SET_STATUS = 'SET_STATUS';
 const CHANGE_HP = 'CHANGE_HP';
+const NEXT_TURN = 'NEXT_TURN';
 
 const handlers = {};
 
@@ -20,7 +22,9 @@ export function rolePlay(state = {
 	aReceive: {},
 	dReceive: {},
 	aAbil: 'attack',
-	dAbil: 'attack'
+	dAbil: 'attack',
+	battleSeq: [],
+	currTurn: -1
 }, action) {
 	const { type, payload } = action;
 
@@ -45,6 +49,16 @@ handlers[CHARACTERS] = (state, payload) => {
 	const { characters } = payload;
 	const newState = { ...state };
 	newState.characters = characters;
+	// set battle sequence
+	const sortedChars = _.sortBy(characters, (elem) => {
+		return elem.agi.score * -1;
+	});
+	newState.currTurn = 0;
+	newState.battleSeq = sortedChars;
+	newState.aIndex = _.findIndex(characters, (elem) => {
+		return newState.battleSeq[newState.currTurn].name === elem.name;
+	});
+	newState.attacker = newState.characters[newState.aIndex];
 	return newState;
 };
 
@@ -112,5 +126,15 @@ handlers[CHANGE_HP] = (state, payload) => {
 	const newState = { ...state };
 	const char = newState.characters[payload.index];
 	char.hp = payload.hp;
+	return newState;
+};
+
+handlers[NEXT_TURN] = (state) => {
+	const newState = { ...state };
+	newState.currTurn = (newState.currTurn + 1) % newState.battleSeq.length;
+	newState.aIndex = _.findIndex(newState.	characters, (elem) => {
+		return newState.battleSeq[newState.currTurn].name === elem.name;
+	});
+	newState.attacker = newState.characters[newState.aIndex];
 	return newState;
 };

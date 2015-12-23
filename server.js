@@ -44,8 +44,6 @@ app.post('/', function(req, res, next) {
 app.post('/save', function(req, res) {
 	var character = req.body;
 	var json = JSON.stringify(character);
-	console.log(json);
-	console.log(character.name);
 	fs.writeFile("characters/" + character.name + ".txt", json, function(err) {
 	    if(err) {
 	        return console.log(err);
@@ -68,8 +66,6 @@ app.get('/characters', function(req, res) {
 	        data.push(d);
 	    });
 		var ret = JSON.stringify(data);
-		console.log(ret);
-		console.log('test');
 		res.type('application/json');
 		res.send(ret);
 	});

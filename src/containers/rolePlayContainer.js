@@ -75,7 +75,7 @@ export default class RolePlayContainer extends Component {
 		return (
 			<div>
 				<div className="attacker">
-					<select onChange={this.onChangeAttacker.bind(this)}>
+					<select value={aIndex} onChange={this.onChangeAttacker.bind(this)}>
 						{this.renderCharacters()}
 					</select>
 					<If condition={!_.isEmpty(attacker)}>
@@ -93,9 +93,10 @@ export default class RolePlayContainer extends Component {
 					<div>{aReceive.heal}</div>
 					<div>{aReceive.healDam}</div>
 					<Button onClick={() => this.onBattle(attacker, defender)}>Battle</Button>
+					<Button onClick={() => store.actions.rolePlayActions.next()}>Next</Button>
 				</div>
 				<div className="defender">
-					<select onChange={this.onChangeDefender.bind(this)}>
+					<select value={dIndex} onChange={this.onChangeDefender.bind(this)}>
 						{this.renderCharacters()}
 					</select>
 					<If condition={!_.isEmpty(defender)}>

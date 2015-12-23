@@ -80,3 +80,9 @@ export function changeHp(charIndex, hp) {
 		}
 	};
 }
+
+export function next() {
+	return {
+		type: 'NEXT_TURN'
+	};
+}

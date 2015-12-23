@@ -1,0 +1,58 @@
+{
+  "str": {
+    "score": 11,
+    "die": 4,
+    "modifer": 0,
+    "temp": 0
+  },
+  "int": {
+    "score": 11,
+    "modifer": 0,
+    "temp": 0,
+    "die": 4
+  },
+  "agi": {
+    "score": 12,
+    "modifer": 0,
+    "temp": 0,
+    "die": 4
+  },
+  "end": {
+    "score": 10,
+    "modifer": 0,
+    "temp": 0,
+    "die": 4
+  },
+  "cha": {
+    "score": 11,
+    "modifer": 0,
+    "temp": 0,
+    "die": 4
+  },
+  "per": {
+    "score": 12,
+    "modifer": 0,
+    "temp": 0,
+    "die": 4
+  },
+  "luc": {
+    "score": 11,
+    "modifer": 0,
+    "temp": 0,
+    "die": 4
+  },
+  "phy": "-",
+  "men": "-",
+  "fir": "-",
+  "ice": "-",
+  "win": "-",
+  "thu": "-",
+  "dar": "-",
+  "lig": "-",
+  "hp": 20,
+  "name": "Gin",
+  "passive": {"crit_aid":true,"fir_boost":true},
+  "active": ["double_up","agi"],
+  "perm": {},
+  "status": {}
+}
