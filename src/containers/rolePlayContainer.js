@@ -4,7 +4,7 @@ import '../styles/main';
 import _ from 'lodash';
 import { store } from '../store';
 import { Character } from '../components';
-import { Button } from 'react-bootstrap';
+import { Button, Input } from 'react-bootstrap';
 
 @connect(state => ({
 	rolePlay: state.rolePlay
@@ -75,10 +75,12 @@ export default class RolePlayContainer extends Component {
 			<div>
 				<br/>
 				<div>{r.dam}</div>
+				<div>{r.result}</div>
 				<div>{r.res}</div>
 				<div>{r.crit}</div>
 				<div>{r.heal}</div>
 				<div>{r.healDam}</div>
+				<div>{r.status}</div>
 			</div>
 		);
 	}
@@ -105,9 +107,12 @@ export default class RolePlayContainer extends Component {
 						{this.renderAbilities(attacker)}
 					</select>
 					<If condition={!_.isEmpty(attacker)}>
-						<Character character={attacker}
-							onStatusChange={(e, status) => this.onStatusChange(e, status, aIndex)}
-							onHpChange={(e) => this.onHpChange(e, aIndex)}/>
+						<div>
+							<div>Curr HP</div>
+							<Input className="stat-text" id="hp" type="text" value={attacker.currHp} onChange={(e) => this.onHpChange(e, aIndex)} />
+							<Character character={attacker}
+								onStatusChange={(e, status) => this.onStatusChange(e, status, aIndex)}/>
+						</div>
 					</If>
 				</div>
 				<div className="aRes">
@@ -130,9 +135,12 @@ export default class RolePlayContainer extends Component {
 						{this.renderAbilities(defender)}
 					</select>
 					<If condition={!_.isEmpty(defender)}>
-						<Character character={defender}
-							onStatusChange={(e, status) => this.onStatusChange(e, status, dIndex)}
-							onHpChange={(e) => this.onHpChange(e, dIndex)} />
+						<div>
+							<div>Curr HP</div>
+							<Input className="stat-text" id="hp" type="text" value={defender.currHp} onChange={(e) => this.onHpChange(e, aIndex)} />
+							<Character character={defender}
+								onStatusChange={(e, status) => this.onStatusChange(e, status, dIndex)}/>
+						</div>
 					</If>
 				</div>
 			</div>

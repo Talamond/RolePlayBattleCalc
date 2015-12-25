@@ -195,15 +195,27 @@ export function garu(char) {
 }
 
 export function bind(char) {
-	return doDebuff(char);
+	const ret = doDebuff(char);
+	ret.status = 'bind';
+	return ret;
 }
 
 export function debuff(char) {
-	return doDebuff(char);
+	const ret = doDebuff(char);
+	ret.status = 'debuff';
+	return ret;
 }
 
 export function blind(char) {
-	return doDebuff(char);
+	const ret = doDebuff(char);
+	ret.status = 'blind';
+	return ret;
+}
+
+export function poison(char) {
+	const ret = doDebuff(char);
+	ret.status = 'poison';
+	return ret;
 }
 
 export function hama(char) {

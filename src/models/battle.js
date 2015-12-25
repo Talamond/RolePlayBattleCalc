@@ -92,7 +92,9 @@ function applyStatus(att, defChar) {
 	console.log('Status Roll: ' + rollRes);
 	return {
 		res,
-		result: rollRes > 2 ? 'Success' : 'Failed'
+		result: rollRes > 2 ? 'Success' : 'Failed',
+		status: att.status,
+		mainRoll: rollRes
 	};
 }
 
@@ -184,21 +186,15 @@ export function battle(attacker, aAbil, defender, dAbil) {
 	if (aResult.heal === 'Guarded') {
 		aResult.dam = Math.floor(aResult.dam / 2);
 	}
-	aResult.mainRoll = aAtt.mainRoll;
-	aResult.critRoll = aAtt.critRoll;
-	aResult.agiRoll = aSpeed.agiRoll;
-	dResult.mainRoll = dAtt.mainRoll;
-	dResult.critRoll = dAtt.critRoll;
-	dResult.agiRoll = dSpeed.agiRoll;
 	// TODO reflect
 	return {
 		aRoll: {
-			mainRoll: aAtt.mainRoll,
+			mainRoll: aAtt.mainRoll ? aAtt.mainRoll : aResult.mainRoll,
 			critRoll: aAtt.critRoll,
 			agiRoll: aSpeed.agiRoll
 		},
 		dRoll: {
-			mainRoll: dAtt.mainRoll,
+			mainRoll: dAtt.mainRoll ? dAtt.mainRoll : dResult.mainRoll,
 			critRoll: dAtt.critRoll,
 			agiRoll: dSpeed.agiRoll
 		},

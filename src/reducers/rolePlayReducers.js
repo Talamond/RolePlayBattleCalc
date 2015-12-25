@@ -51,6 +51,9 @@ handlers[CHARACTERS] = (state, payload) => {
 	const { characters } = payload;
 	const newState = { ...state };
 	newState.characters = characters;
+	newState.characters.forEach((elem) => {
+		elem.currHp = elem.hp;
+	});
 	// set battle sequence
 	const sortedChars = _.sortBy(characters, (elem) => {
 		return elem.agi.score * -1;
@@ -88,13 +91,19 @@ handlers[BATTLE] = (state, payload) => {
 	newState.dReceive = result.dReceive;
 	newState.aRoll = result.aRoll;
 	newState.dRoll = result.dRoll;
-	// newState.characters[newState.aIndex].hp = newState.characters[newState.aIndex].hp
+	if (newState.aReceive.status) {
+		newState.attacker.status[newState.aReceive.status] = true;
+	}
+	if (newState.dReceive.status) {
+		newState.defender.status[newState.dReceive.status] = true;
+	}
+	// newState.characters[newState.aIndex].currHp = newState.characters[newState.aIndex].currHp
 	// 	- (newState.aReceive.dam ? newState.aReceive.dam : 0)
 	// 	+ (newState.aReceive.healDam ? newState.aReceive.healDam : 0);
-	// newState.characters[newState.dIndex].hp = newState.characters[newState.dIndex].hp
+	// newState.characters[newState.dIndex].currHp = newState.characters[newState.dIndex].currHp
 	// 	- (newState.dReceive.dam ? newState.dReceive.dam : 0)
 	// 	+ (newState.dReceive.healDam ? newState.dReceive.healDam : 0);
-	console.log(result);
+	// console.log(result);
 	return newState;
 };
 
@@ -129,7 +138,7 @@ handlers[SET_STATUS] = (state, payload) => {
 handlers[CHANGE_HP] = (state, payload) => {
 	const newState = { ...state };
 	const char = newState.characters[payload.index];
-	char.hp = payload.hp;
+	char.currHp = payload.hp;
 	return newState;
 };
 
@@ -139,6 +148,18 @@ handlers[NEXT_TURN] = (state) => {
 	newState.aIndex = _.findIndex(newState.	characters, (elem) => {
 		return newState.battleSeq[newState.currTurn].name === elem.name;
 	});
+	newState.aReceive = {};
+	newState.dReceive = {};
+	newState.aRoll = {};
+	newState.dRoll = {};
 	newState.attacker = newState.characters[newState.aIndex];
+	if (newState.attacker.status.poison) {
+		newState.aReceive.dam = Math.floor(newState.attacker.hp * 0.20);
+		newState.aReceive.res = 'Poison';
+	}
+	if (newState.attacker.status.regen) {
+		newState.aReceive.heal = 'Regen';
+		newState.aReceive.healDam = Math.ceil(newState.attacker.hp * 0.10);
+	}
 	return newState;
 };
